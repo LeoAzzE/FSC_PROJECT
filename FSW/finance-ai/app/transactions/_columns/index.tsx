@@ -10,7 +10,6 @@ import {
   TRANSACTION_PAYMENT_METHOD_LABELS,
 } from "@/app/_constants/transactions";
 import EditTransactionButton from "../_components/edit-transaction-button";
-//import EditTransactionButton from "../_components/edit-transaction-button";
 
 export const transactionColumns: ColumnDef<Transaction>[] = [
   {
@@ -58,7 +57,6 @@ export const transactionColumns: ColumnDef<Transaction>[] = [
   {
     accessorKey: "actions",
     header: "Ações",
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     cell: ({ row: { original: transaction } }) => {
       return (
         <div className="space-x-1">

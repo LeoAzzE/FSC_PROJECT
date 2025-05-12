@@ -4,10 +4,8 @@ import { ArrowDownUpIcon } from "lucide-react";
 import { Button } from "./ui/button";
 import { useState } from "react";
 import UpsertTransactionDialog from "./upsert-transaction-dialog";
-//import UpsertTransactionDialog from "./upsert-transaction-dialog";
 
 const AddTransactionButton = () => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [dialogIsOpen, setDialogIsOpen] = useState(false);
 
   return (
