@@ -26,7 +26,7 @@ export default function RootLayout({
             baseTheme: dark,
           }}
         >
-          {children}
+          <div>{children}</div>
         </ClerkProvider>
       </body>
     </html>

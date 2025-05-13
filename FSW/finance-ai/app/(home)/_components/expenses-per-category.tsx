@@ -1,22 +1,37 @@
-import { ReactNode } from "react";
+import { CardContent, CardHeader, CardTitle } from "@/app/_components/ui/card";
+import { Progress } from "@/app/_components/ui/progress";
+import { ScrollArea } from "@/app/_components/ui/scroll-area";
+import { TRANSACTION_CATEGORY_LABELS } from "@/app/_constants/transactions";
+import { TotalExpensePerCategory } from "@/app/_data/get-dashboard/types";
 
-interface PercentageItemProps {
-  icon: ReactNode;
-  title: string;
-  value: number;
+interface ExpensesPerCategoryProps {
+  expensesPerCategory: TotalExpensePerCategory[];
 }
 
-const PercentageItem = ({ icon, title, value }: PercentageItemProps) => {
+const ExpensesPerCategory = ({
+  expensesPerCategory,
+}: ExpensesPerCategoryProps) => {
   return (
-    <div className="flex items-center justify-between">
-      {/* Icone */}
-      <div className="flex items-center gap-3">
-        <div className="rounded-lg bg-white bg-opacity-[3%] p-2">{icon}</div>
-        <p className="text-sm text-muted-foreground">{title}</p>
-      </div>
-      <p className="text-sm font-bold">{value}%</p>
-    </div>
+    <ScrollArea className="col-span-2 h-full rounded-md border pb-6">
+      <CardHeader>
+        <CardTitle className="font-bold">Gastos por Categoria</CardTitle>
+      </CardHeader>
+
+      <CardContent className="space-y-6">
+        {expensesPerCategory.map((category) => (
+          <div key={category.category} className="space-y-2">
+            <div className="flex w-full justify-between">
+              <p className="text-sm font-bold">
+                {TRANSACTION_CATEGORY_LABELS[category.category]}
+              </p>
+              <p className="text-sm font-bold">{category.percentageOfTotal}%</p>
+            </div>
+            <Progress value={category.percentageOfTotal} />
+          </div>
+        ))}
+      </CardContent>
+    </ScrollArea>
   );
 };
 
-export default PercentageItem;
+export default ExpensesPerCategory;
